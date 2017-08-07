@@ -1,0 +1,32 @@
+{
+  "name": "code-companions-api",
+  "version": "1.0.0",
+  "description": "the api for Code Companions",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js",
+    "start" : "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nati-alvarez/code-companions-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nati-alvarez/code-companions-api/issues"
+  },
+  "homepage": "https://github.com/nati-alvarez/code-companions-api#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-validator": "^3.2.1",
+    "pg": "^7.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
