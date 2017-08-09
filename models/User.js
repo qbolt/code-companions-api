@@ -28,6 +28,9 @@ module.exports = sequelize.define('user', {
   verified: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  verification_code: {
+    type: Sequelize.STRING
   }
 },{
   timestamps: false
