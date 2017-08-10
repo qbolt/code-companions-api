@@ -14,4 +14,4 @@ app.use('/api', router);
 
 
 const port = process.env.port || 8080;
-app.listen(port, ()=>{console.log(`api listening on port ${port}`)});
+app.listen(port, () => console.log(`api listening on port ${port}`));
