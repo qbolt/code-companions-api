@@ -11,8 +11,8 @@ const ProjectListing = require('./models/ProjectListing');
 
 //email server
 const emailServer = emailjs.server.connect({
-    user: "",
-    password: "",
+    user: "codecompanionverify@gmail.com",
+    password: "verifycompanioncode",
     host: "smtp.gmail.com",
     ssl: true
 });

@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "nodemon app.js",
-    "start": "node app.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,11 @@
     "express-validator": "^3.2.1",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.4.2"
+    "sequelize": "^4.4.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.10"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
