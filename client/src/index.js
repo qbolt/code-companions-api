@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import './index.css';
+import './index.sass';
 import registerServiceWorker from './registerServiceWorker';
 
 const app = document.getElementById('root');
