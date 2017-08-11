@@ -1,20 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
-import './index.sass';
+import { render } from 'react-dom';
+
 import registerServiceWorker from './registerServiceWorker';
 
-const app = document.getElementById('root');
+import Root from './Root'
 
-ReactDOM.render(
-    <Router>
-        <Route path="/">
-            <h1>Test</h1>
-        </Route>
-    </Router>,
-app);
+import store from './redux'
+
+render(
+    <Root store={store}/>,
+    document.getElementById('root'),
+);
 
 registerServiceWorker();
