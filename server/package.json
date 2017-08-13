@@ -4,36 +4,24 @@
   "description": "the api for Code Companions",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon app.js",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "start": "node app.js",
+    "test": "nodmeon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nati-alvarez/code-companions-api.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nati-alvarez/code-companions-api/issues"
-  },
-  "homepage": "https://github.com/nati-alvarez/code-companions-api#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "ejs": "^2.5.7",
     "emailjs": "^1.0.11",
-    "express": "^4.15.3",
+    "express": "~4.15.2",
+    "express-session": "^1.15.5",
     "express-validator": "^3.2.1",
+    "jsonwebtoken": "^7.4.2",
+    "morgan": "~1.8.1",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.4.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.2",
-    "react-scripts": "1.0.10"
-  },
-  "devDependencies": {
-    "nodemon": "^1.11.0"
+    "sequelize": "^4.4.3",
+    "serve-favicon": "~2.4.2"
   }
 }

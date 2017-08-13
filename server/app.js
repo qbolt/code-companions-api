@@ -1,17 +1,32 @@
-const express = require('express');
-const app = express();
-const router = require('./router');
-const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
+const express = require('express')
+const path = require('path')
+const favicon = require('serve-favicon')
+const logger = require('morgan')
+const bodyParser = require('body-parser')
+const session = require('express-session')
+const app = express()
+const jwt = require('jsonwebtoken')
+const expressValidator = require('express-validator')
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(expressValidator());
 
-//prefix all routes with api
-app.use('/api', router);
+//models
+var User = require('./models/User.js')
 
 
-const port = process.env.port || 8080;
-app.listen(port, () => console.log(`api listening on port ${port}`));
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(expressValidator())
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
+
+
+//routes
+var index = require('./routes/index')
+var users = require('./routes/users')
+
+app.use('/api/', index)
+app.use('/api/users', users)
+
+
+app.listen(8080, ()=>{console.log("api on port 8080")})

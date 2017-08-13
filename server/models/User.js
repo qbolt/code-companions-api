@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('postgres://fujfntzw:KPGbWEPIl_qrZ8hHCjqqHnB8VT4hfsC8@babar.elephantsql.com:5432/fujfntzw');
+var Sequelize = require('sequelize')
+var sequelize = new Sequelize('postgres://fujfntzw:KPGbWEPIl_qrZ8hHCjqqHnB8VT4hfsC8@babar.elephantsql.com:5432/fujfntzw', { define: { underscored: true } });
 
-module.exports = sequelize.define('user', {
+var User = sequelize.define('user', {
     first_name: {
         type: Sequelize.STRING
     },
@@ -32,6 +32,6 @@ module.exports = sequelize.define('user', {
     verification_code: {
         type: Sequelize.STRING
     }
-}, {
-    timestamps: false
-});
+})
+
+module.exports = User
