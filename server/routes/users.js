@@ -90,23 +90,37 @@ router.get('/:id/verify', (req, res)=>{
   ).then(user => {
     res.json({ success: true, msg: "Your account was verified!" })
   }).catch(err => {
-    console.log(err)
     res.json({ success: false, err: err })
   })
 })
 
 router.route('/:id')
-  .all(auth, function(req, res, next) {
+  .get(auth, (req, res)=>{ 
     jwt.verify(req.token, "secret-key", (err, data)=>{
       if(err){
           res.json({success: false, err: err})
       }else {
-        next();
+        User.findById(req.params.id).then(user => res.json({success: true, user: user }))
       }
     })
   })
-  .get((req, res)=>{ User.findById(req.params.id).then(user => res.json({success: true, user: user }))})
-  .put((req, res) => res.json({ update: 'update users' }))
-  .delete((req, res) => res.json({ delete: 'deleted user' }))
+  .put((req, res) =>{ 
+    jwt.verify(req.token, "secret-key", (err, data)=>{
+      if(err){
+          res.json({success: false, err: err})
+      }else {
+        res.json({ update: 'update users' })
+      }
+    })
+  })
+  .delete((req, res) => { 
+    jwt.verify(req.token, "secret-key", (err, data)=>{
+      if(err){
+        res.json({success: false, err: err})
+      }else {
+        res.json({ delete: 'deleted user' })
+      }
+    })
+  })
 
 module.exports = router

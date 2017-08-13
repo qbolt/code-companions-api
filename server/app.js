@@ -8,10 +8,13 @@ const app = express()
 const jwt = require('jsonwebtoken')
 const expressValidator = require('express-validator')
 
-
-
-//models
-var User = require('./models/User.js')
+//CORS middleware
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', 'OPTIONS, POST, GET')
+  next();
+});
 
 
 app.use(logger('dev'))
