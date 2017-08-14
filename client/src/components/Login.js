@@ -13,7 +13,8 @@ class Login extends Component {
     }
 
     userLogin (e) {
-        this.props.onLogin(this.state.username, this.state.password);
+        console.log('calling action')
+        this.props.login(this.state.username, this.state.password);
         e.preventDefault();
     }
 
@@ -49,8 +50,8 @@ class Login extends Component {
 const mapStateToProps = (state) => ({ isLoggedIn: state.auth.isLoggedIn })
 
 const mapDispatchToProps = (dispatch) => ({
-    onLogin: (username, password) => { dispatch(login(username, password)); },
+    login,
     // onSignUp: (username, password) => { dispatch(signup(username, password)); }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, { login })(Login);

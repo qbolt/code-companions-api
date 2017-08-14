@@ -1,37 +1,20 @@
-const defaultState = {
-    isLoggedIn: false,
-    loggingIn: false,
-    username: '',
-    data: null,
-    err: null
-}
+import {
+    AUTH_USER,
+    UNAUTH_USER,
+    AUTH_ERROR,
+} from '../actions/types'
 
-const reducer = (state = defaultState, action) => {
+const INITIAL_STATE = { error: '', message: '', content: '', authenticated: false }
+
+const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'LOGIN':
-            return Object.assign({}, state, {
-                loggingIn: true,
-                username: action.username,
-            })
-        case 'LOGIN_SUCCESS':
-            return Object.assign({}, state, {
-                loggingIn: false,
-                isLoggedIn: true,
-                data: action.payload,
-                err: null
-            })
-        case 'LOGIN_ERROR':
-            return Object.assign({}, state, {
-                loggingIn: false,
-                isLoggedIn: false,
-                err: action.payload
-            })
-        case 'LOGOUT':
-            return Object.assign({}, state, {
-                isLoggedIn: false,
-                username: '',
-                data: null
-            })
+        case AUTH_USER:
+            console.log('authed!')
+            return { ...state, error: '', message: '', authenticated: true }
+        case UNAUTH_USER:
+            return { ...state, authenticated: false }
+        case AUTH_ERROR:
+            return { ...state, error: action.payload }
         default:
             return state
     }
