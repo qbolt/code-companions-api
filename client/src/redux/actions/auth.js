@@ -9,14 +9,14 @@ import {
 const API_URL = 'http://localhost:8080/api';
 
 export const errorHandler = (dispatch, error, type) => {
-    let errorMessage = '';
+    let errorMessage = ''
 
     if (error.data.error) {
-        errorMessage = error.data.error;
+        errorMessage = error.data.error
     } else if (error.data) {
-        errorMessage = error.data;
+        errorMessage = error.data
     } else {
-        errorMessage = error;
+        errorMessage = error
     }
 
     console.log(errorMessage)
@@ -38,26 +38,26 @@ export const login = (username, password) => {
     console.log('entering action')
     return (dispatch) => {
         console.log('calling post')
-        axios.post(API_URL + '/login', { username: username, password: password })
+        axios.post(API_URL + '/login', { username, password })
             .then(response => {
                 console.log('GOT RESPONSE')
                 dispatch({ type: AUTH_USER })
-                // window.location.href = CLIENT_ROOT_URL + '/dashboard';
+                // window.location.href = CLIENT_ROOT_URL + '/home';
             })
             .catch(error => {
                 console.log(error)
-                //
             });
     }
 }
 
 export function logout() {
     return function(dispatch) {
-        dispatch({ type: UNAUTH_USER });
+        dispatch({ type: UNAUTH_USER })
         console.log('logging out')
         // window.location.href = CLIENT_ROOT_URL + '/login';
     }
 }
 
-export const signup = (username, password) => (dispatch) => { /*TODO*/
+export const signup = (username, password) => {
+
 }
