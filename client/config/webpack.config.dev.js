@@ -28,7 +28,7 @@ const env = getClientEnvironment(publicUrl);
 module.exports = {
     // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
     // See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
-    devtool: 'cheap-module-source-map',
+    devtool: 'source-map',
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     // The first two entry points enable "hot" CSS and auto-refreshes for JS.
@@ -216,7 +216,8 @@ module.exports = {
                 test: /\.sass$/,
                 include: paths.appSrc,
                 loaders: ["style-loader", "css-loader", "sass-loader"]
-            }
+            },
+            { test: /\.(woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
             // ** STOP ** Are you adding a new loader?
             // Remember to add the new extension(s) to the "file" loader exclusion list.
         ],

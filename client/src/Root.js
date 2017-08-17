@@ -1,14 +1,13 @@
 // React imports
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 
 // Links react store to redux components
 import { Provider } from 'react-redux'
 
 // Component imports
-import Layout from './components/Layout'
 import App from './components/App'
-import Home from './components/Home'
+import Login from './components/Login'
 
 // Root render component. Renders all of our components within the specified routes.
 // Provider provides the store to all of the components within the application.
@@ -16,10 +15,10 @@ import Home from './components/Home'
 const Root = ({ store }) => (
     <Provider store={store}>
         <Router>
-            <Layout>
-                <Route exact path="/" component={Home}></Route>
-                <Route path="/login" component={App}></Route>
-            </Layout>
+            <Switch>
+                <Route path="/login" component={Login}/>
+                <Route component={App}/>
+            </Switch>
         </Router>
     </Provider>
 )

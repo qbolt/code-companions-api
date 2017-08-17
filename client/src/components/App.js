@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Login from './Login'
-import Secured from './Secured'
+import Home from './Home'
 
 class Application extends Component {
-    render() {
-        if (this.props.isLoggedIn) {
-            return <Secured />
-        } else {
-            return <Login />
+
+    componentWillMount() {
+        if (!this.props.authenticated) {
+            this.props.history.push('/login')
         }
+    }
+
+    render() {
+        return <Home/>
     }
 }
 
 const mapStateToProps = (state) => ({
-    isLoggedIn: state.auth.isLoggedIn
+    authenticated: state.auth.authenticated
 })
 
-export default connect(mapStateToProps)(Application)
+export default connect(mapStateToProps)(withRouter(Application))

@@ -1,21 +1,22 @@
+@import url('http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,100,500,900')
+
+$source-code-pro: 'Source Code Pro', sans-serif
+$header-font: 'Source Code Pro', sans-serif
+$body-font: 'Source Code Pro', sans-serif
+
 $primary-color: #f3f3f3
 
-@font-face 
-  font-family: 'Heading Font'
-  src: url(fonts/heading.woff)
-
-@font-face
-  font-family: 'Body Font'
-  src: url('https://fonts.googleapis.com/css?family=Source+Code+Pro')
+body
+  font-family: $body-font
+  font-weight: normal
 
 h1, h2, h3, h4
-  font-family: 'Heading Font'
+  font-family: $header-font
+  font-weight: normal
 
 body
   margin: 0
   padding: 0
   color: #333
   background-color: $primary-color
-  font-family: 'Body Font'
-
-@import home
+  font-family: $source-code-pro

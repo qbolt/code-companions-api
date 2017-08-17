@@ -3,23 +3,13 @@ import axios from 'axios';
 import {
     AUTH_USER,
     AUTH_ERROR,
-    UNAUTH_USER
+    UNAUTH_USER,
+    INVALID_CREDENTIALS
 } from './types';
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'http://localhost:8080/api/users';
 
 export const errorHandler = (dispatch, error, type) => {
-    let errorMessage = ''
-
-    if (error.data.error) {
-        errorMessage = error.data.error
-    } else if (error.data) {
-        errorMessage = error.data
-    } else {
-        errorMessage = error
-    }
-
-    console.log(errorMessage)
     if (error.status === 401) {
         dispatch({
             type: type,
@@ -29,20 +19,21 @@ export const errorHandler = (dispatch, error, type) => {
     } else {
         dispatch({
             type,
-            payload: errorMessage
+            payload: error
         });
     }
 }
 
-export const login = (username, password) => {
-    console.log('entering action')
+export const login = (username, password, history) => {
     return (dispatch) => {
-        console.log('calling post')
         axios.post(API_URL + '/login', { username, password })
-            .then(response => {
-                console.log('GOT RESPONSE')
-                dispatch({ type: AUTH_USER })
-                // window.location.href = CLIENT_ROOT_URL + '/home';
+            .then(({ data }) => {
+                if (data.success) {
+                    dispatch({ type: AUTH_USER })
+                    history.push('/home')
+                } else {
+                    dispatch({ type: INVALID_CREDENTIALS })
+                }
             })
             .catch(error => {
                 console.log(error)
@@ -50,11 +41,10 @@ export const login = (username, password) => {
     }
 }
 
-export function logout() {
-    return function(dispatch) {
+export const logout = (history) => {
+    return (dispatch) => {
         dispatch({ type: UNAUTH_USER })
-        console.log('logging out')
-        // window.location.href = CLIENT_ROOT_URL + '/login';
+        history.push('/login')
     }
 }
 
